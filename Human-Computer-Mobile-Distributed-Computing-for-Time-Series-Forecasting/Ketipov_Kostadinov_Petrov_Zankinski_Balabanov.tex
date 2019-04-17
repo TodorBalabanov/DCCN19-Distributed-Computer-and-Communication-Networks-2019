@@ -2,6 +2,7 @@
 \usepackage[english]{babel}
 \usepackage{url}
 \usepackage{graphicx,DCCN2019_en}
+\usepackage{placeins}
 
 \pagestyle{fancy}
 \fancyhead{} 
@@ -27,7 +28,7 @@
 
 \title{Human-Computer Mobile Distributed Computing for Time Series Forecasting}
 
-\author[1]{\small R.R. Ktipov}
+\author[1]{\small R.R. Ketipov}
 \author[1]{\small G.B. Kostadinov}
 \author[1]{\small P.D. Petrov}
 \author[1]{\small \\I.A. Zankinski}
@@ -55,21 +56,70 @@ Distributed computing became very popular in the last two decades. In many cases
 
 \section{Introduction} \label{Introduction}
 
-Financial time series forecasting is an attractive and intensively researched area. One of the most interesting research directions in this field is related to the usage of artificial neural networks combined with evolutionary algorithms. In some studies evolutionary algorithms are used for artificial neural network topology optimization, but in other studies evolutionary algorithms are used for artificial neural network weights optimization. When evolutionary algorithms are used for weights optimization it is very common the training to be combined with back-propagation algorithm. Even when such hybrid training algorithm is used it is in the class of supervised training. Training examples are fed to the artificial neural network and its weights are modified according the selected training algorithm. Evolutionary algorithms have a common advantage compared to the exact numerical methods and it is the possibility for parallel calculations. When the parallel calculations are done on separate mobile devices it is the case of mobile distributed computing. It is very common the financial forecasting to be done by the usage of the past values in the time series, but it can be combined with human evaluation of the future values. In this research human-computer based mobile distributed computing solution is proposed. The users are using Android application, which trains artificial neural network with evolutionary algorithms and back-propagation, but users are capable to vote for increase or decrease of the future values. The most successful forecast votes of the users are used in artificial neural network training process.
+Financial time series forecasting is an attractive and intensively researched area \cite{nava01}. One of the most interesting research directions in this field is related to the usage of artificial neural networks combined with evolutionary algorithms \cite{zhang01}. In some studies evolutionary algorithms are used for artificial neural network topology optimization, but in other studies evolutionary algorithms are used for artificial neural network weights optimization \cite{aljarah01}. When evolutionary algorithms are used for weights optimization it is very common the training to be combined with back-propagation algorithm. Even when such hybrid training algorithm is used it is in the class of supervised training. Training examples are fed to the artificial neural network and its weights are modified according the selected training algorithm. Evolutionary algorithms have a common advantage compared to the exact numerical methods and it is the possibility for parallel calculations \cite{altinoz01}. When the parallel calculations are done on separate mobile devices it is the case of mobile distributed computing. It is very common the financial forecasting to be done by the usage of the past values in the time series, but it can be combined with human evaluation of the future values. In this research human-computer based mobile distributed computing solution is proposed. The users are using Android application, which trains artificial neural network with evolutionary algorithms and back-propagation, but users are capable to vote for increase or decrease of the future values. The most successful forecast votes of the users are used in artificial neural network training process.
 
 \section{Model Proposition} \label{Model Proposition}
 
+MoneyBee screensaver (Fig. \ref{fig01}) was organized as desktop application, which runs in background when the computer is in idle mode. Artificial neural networks were trained with the usage of evolutionary algorithms. The main advantage of this approach is that it is using donated computation power of many participants. In the same time the biggest disadvantage is that the screensaver is used relatively rare only when the user is not using the computer. The other disadvantage is that personal computers are not used 24/7.
+
+\begin{figure}
+\includegraphics[width=0.5\textwidth]{fig01.png}
+\centering
+\caption{MoneyBee screensaver.} \label{fig01}
+\end{figure}
+\FloatBarrier
+
+These disadvantages are addressed in the VitoshaTrade project (Fig. \ref{fig02}), developed in IICT-BAS. This implementation is done under Android operating system as active wallpaper. Inside the forecasting module multilayer perceptron is used. The training algorithm is combination between back-propagation and differential evolution. All calculations are done as active Android application, which works 24/7 in a background mode. When better artificial neural network weights are found communication with a remote server is done. Active wallpapers are used to visualize information on a full screen behind all other visual components. 
+
+\begin{figure}
+\includegraphics[width=1.0\textwidth]{fig02.png}
+\centering
+\caption{VitoshaTrade active wallpaper.} \label{fig02}
+\end{figure}
+\FloatBarrier
+
+In both projects only pure mathematical information is used for prediction calculations. This limitation was overcome in ElectricSheep\cite{draves01} project. In this project rating system is used in which users vote for different fractal generated animations. Voting is done in two directions thumb up and thumb down. Each vote increase or decrease individual rating, which is directly related to its survival chances. The rating is not constant and it goes down with the time passing. 
+
+This study proposes combination of the projects described above. VitoshaTrade project is extended in the direction of voting system addition. The Android operating system offers software modules called widgets. Widgets have graphical user interface and they occupy small part of the visible working area. Most commonly widgets are used for representation of small pieces of information, such astronomical time, weather forecast, calendar and many others. Widgets are much more interactive than the active wallpaper. The user is capable to input small pieces of information as voting for example. The other better advantage of the widgets is that users have much better control over visualization and placement of the widgets. In this study composite widget is proposed, which shows the thicker of the currency pair (EUR/USD in the example provided), value of the rate between the two currencies and arrows for vote up or vote down. 
+
+Voting of the users is collected on PHP/MySQL based web server\cite{tomov01}, part of the server side implementation of the VitoshaTrade project. On the server side additional analysis is done. Votes which were more accurate are better taken for next generations in the global distributed differential evolution population. 
+
 \section{Experiments and Results} \label{Experiments and Results}
 
+\begin{figure}
+\includegraphics[width=0.8\textwidth]{fig03.png}
+\centering
+\caption{Forex EUR/USD time series.} \label{fig03}
+\end{figure}
+\FloatBarrier
+
 \section{Conclusion} \label{Conclusion}
+
+Pure technical analysis in time series field has its limits. Values measured in time are just one projection of the process, which goes under it. Any computer based calculation nowadays is not capable to act as human intuition. The mechanisms behind human intuition are not investigated enough and are still very difficult to recreate in the modern computers. Because of these reasons the proposed financial time series forecasting solution advances the pure technical analysis with minimal influence of human impact. The proposed simple voting system put in one place the power of machine learning algorithms and the human sixth sense feeling in an efficient and cost effective financial forecasting infrastructure.
+
+As future research it will be interesting different communication capabilities to be investigated as described in \cite{alexandrov01}. Also it will be interesting generalized artificial neural networks \cite{tashev01} to be used instead of multilayer perceptron.
 
 \vskip 1.5em
 
 \begin{thebibliography}{99}
 
-\bibitem{bohn01} Bohn, A., Guting, T., Mansmann, T., \textbf{\textit{MoneyBee: A new product to predict stock market developments using artificial intelligence and increased calculation capacitiy}} (in German), et al. Wirtschaftsinf, vol. 45, no. 3, p. 325--333, 2003.
+\bibitem{nava01} Nava, N., Di Matteo, T., Aste, T., \textbf{\textit{Financial Time Series Forecasting Using Empirical Mode Decomposition and Support Vector Regression}}, RISKS, \textbf{6}(1), article 7, 2018.
+
+\bibitem{zhang01} Zhang, R., Tao, J., \textbf{\textit{A Nonlinear Fuzzy Neural Network Modeling Approach Using an Improved Genetic Algorithm}}, IEEE Transactions on Industrial Electronics, \textbf{65}(7), p. 5882--5892, 2018.
+
+\bibitem{aljarah01} Aljarah, I., Faris, H., Mirjalili, S., \textbf{\textit{Optimizing connection weights in neural networks using the whale optimization algorithm}}, Soft Computing, Springer Berlin Heidelberg, \textbf{22}(1), p. 1–15, 2016.
+
+\bibitem{altinoz01} Altinoz, O.T., Deb, K., \textbf{\textit{Late parallelization and feedback approaches for distributed computation of evolutionary multi-objective optimization algorithms}}, Neural Computing and Applications, Springer London, \textbf{30}(3), p. 723--733, 2016.
+
+\bibitem{bohn01} Bohn, A., Guting, T., Mansmann, T., \textbf{\textit{MoneyBee: A new product to predict stock market developments using artificial intelligence and increased calculation capacitiy}} (in German), et al. Wirtschaftsinf, \textbf{45}(3), p. 325--333, 2003.
 
 \bibitem{tomov01} Tomov, P., Zankinski, I., Barova, M., \textbf{\textit{Mobile Alternative of the MoneyBee Project for Financial Forecasting}}, Proceedings of the Annual University Scientific Conference of the National Military University Vasil Levski, Veliko Tarnovo, p. 1085--1089, 2018.
+
+\bibitem{draves01} Draves, S., \textbf{\textit{The Electric Sheep Screen-Saver: A Case Study in Aesthetic Evolution}}, Proceedings of Applications of Evolutionary Computing: EvoWorkkshops: EvoBIO, EvoCOMNET, EvoHOT, EvoIASP, EvoMUSART, and EvoSTOC Lausanne, LNCS 3449, p. 458--467, 2005.
+
+\bibitem{alexandrov01} Alexandrov, A., \textbf{\textit{Comparative analysis of IEEE 802.15.4 based communication protocols used in wireless intelligent sensor systems}}, Proceedings of the International conference RAM, p. 51--54, 2014.
+
+\bibitem{tashev01} Tashev, T., Hristov, H., \textbf{\textit{Modeling of synthesis of information processes with generalized nets}}, Cybernetics and Information Technologies, \textbf{3}(2), p. 92--104, 2003.
 
 \end{thebibliography}
 
