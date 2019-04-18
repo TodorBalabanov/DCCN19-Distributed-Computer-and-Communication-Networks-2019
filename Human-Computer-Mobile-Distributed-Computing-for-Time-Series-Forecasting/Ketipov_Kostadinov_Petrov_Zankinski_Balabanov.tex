@@ -56,7 +56,7 @@ Distributed computing became very popular in the last two decades. In many cases
 
 \section{Introduction} \label{Introduction}
 
-Financial time series forecasting is an attractive and intensively researched area \cite{nava01}. One of the most interesting research directions in this field is related to the usage of artificial neural networks combined with evolutionary algorithms \cite{zhang01}. In some studies evolutionary algorithms are used for artificial neural network topology optimization, but in other studies evolutionary algorithms are used for artificial neural network weights optimization \cite{aljarah01}. When evolutionary algorithms are used for weights optimization it is very common the training to be combined with back-propagation algorithm. Even when such hybrid training algorithm is used it is in the class of supervised training. Training examples are fed to the artificial neural network and its weights are modified according the selected training algorithm. Evolutionary algorithms have a common advantage compared to the exact numerical methods and it is the possibility for parallel calculations \cite{altinoz01}. When the parallel calculations are done on separate mobile devices it is the case of mobile distributed computing. It is very common the financial forecasting to be done by the usage of the past values in the time series, but it can be combined with human evaluation of the future values. In this research human-computer based mobile distributed computing solution is proposed. The users are using Android application, which trains artificial neural network with evolutionary algorithms and back-propagation, but users are capable to vote for increase or decrease of the future values. The most successful forecast votes of the users are used in artificial neural network training process.
+Financial time series forecasting is an attractive and intensively researched area \cite{nava01}. One of the most interesting research directions in this field is related to the usage of artificial neural networks combined with evolutionary algorithms \cite{zhang01}. In some studies evolutionary algorithms are used for artificial neural network topology optimization \cite{kapanova01}, but in other studies evolutionary algorithms are used for artificial neural network weights optimization \cite{aljarah01}. When evolutionary algorithms are used for weights optimization it is very common the training to be combined with back-propagation algorithm. Even when such hybrid training algorithm is used it is in the class of supervised training. Training examples are fed to the artificial neural network and its weights are modified according the selected training algorithm. Evolutionary algorithms have a common advantage compared to the exact numerical methods and it is the possibility for parallel calculations \cite{altinoz01}. When the parallel calculations are done on separate mobile devices it is the case of mobile distributed computing. It is very common the financial forecasting to be done by the usage of the past values in the time series, but it can be combined with human evaluation of the future values. In this research human-computer based mobile distributed computing solution is proposed. The users are using Android application, which trains artificial neural network with evolutionary algorithms and back-propagation, but users are capable to vote for increase or decrease of the future values. The most successful forecast votes of the users are used in artificial neural network training process.
 
 \section{Model Proposition} \label{Model Proposition}
 
@@ -84,7 +84,9 @@ This study proposes combination of the projects described above. VitoshaTrade pr
 
 Voting of the users is collected on PHP/MySQL based web server\cite{tomov01}, part of the server side implementation of the VitoshaTrade project. On the server side additional analysis is done. Votes which were more accurate are better taken for next generations in the global distributed differential evolution population. 
 
-\section{Experiments and Results} \label{Experiments and Results}
+\section{Experiments} \label{Experiments}
+
+Experiments are done with FOREX financial time series of EUR/USD currency pair (Fig. \ref{fig03}). Time series is disassembled in training examples (7 values for lag and 3 values for lead). Back-propagation combined with differential evolution training of multilayer perceptron is done. Training process is continuous, which means that forecasting is done parallel with the training. Voting of the user directly influence the fitness value of the individuals in the distributed differential evolution population. Some users are better in their vision and are more successful during the voting process. Because of this tracking of the users is of great importance. More reliable votes are taken with higher coefficient for the further predictions. According some regulations, like GDPR in EU \cite{hristov01}, special care should be taken for the personal information collected on the servers side. 
 
 \begin{figure}
 \includegraphics[width=0.8\textwidth]{fig03.png}
@@ -107,6 +109,8 @@ As future research it will be interesting different communication capabilities t
 
 \bibitem{zhang01} Zhang, R., Tao, J., \textbf{\textit{A Nonlinear Fuzzy Neural Network Modeling Approach Using an Improved Genetic Algorithm}}, IEEE Transactions on Industrial Electronics, \textbf{65}(7), p. 5882--5892, 2018.
 
+\bibitem{kapanova01} Kapanova, K., Dimov, I., Sellier, J.M., \textbf{\textit{A genetic approach to automatic neural network architecture optimization}}, Neural Computing and Applications, Springer London, \textbf{29}(5), p. 1481--1492, 2016.
+
 \bibitem{aljarah01} Aljarah, I., Faris, H., Mirjalili, S., \textbf{\textit{Optimizing connection weights in neural networks using the whale optimization algorithm}}, Soft Computing, Springer Berlin Heidelberg, \textbf{22}(1), p. 1–15, 2016.
 
 \bibitem{altinoz01} Altinoz, O.T., Deb, K., \textbf{\textit{Late parallelization and feedback approaches for distributed computation of evolutionary multi-objective optimization algorithms}}, Neural Computing and Applications, Springer London, \textbf{30}(3), p. 723--733, 2016.
@@ -114,6 +118,8 @@ As future research it will be interesting different communication capabilities t
 \bibitem{bohn01} Bohn, A., Guting, T., Mansmann, T., \textbf{\textit{MoneyBee: A new product to predict stock market developments using artificial intelligence and increased calculation capacitiy}} (in German), et al. Wirtschaftsinf, \textbf{45}(3), p. 325--333, 2003.
 
 \bibitem{tomov01} Tomov, P., Zankinski, I., Barova, M., \textbf{\textit{Mobile Alternative of the MoneyBee Project for Financial Forecasting}}, Proceedings of the Annual University Scientific Conference of the National Military University Vasil Levski, Veliko Tarnovo, p. 1085--1089, 2018.
+
+\bibitem{hristov01} Hristov, P., Dimitrov, W., \textbf{\textit{The blockchain as a backbone of GDPR compliant frameworks}}, Proceedings of 8th International Multidisciplinary Symposium - Challenges and Opportunities For Sustainable Development Through Quality and Innovation in Engineering and Research Management, \textbf{20}(1), p. 305--310, 2018.
 
 \bibitem{draves01} Draves, S., \textbf{\textit{The Electric Sheep Screen-Saver: A Case Study in Aesthetic Evolution}}, Proceedings of Applications of Evolutionary Computing: EvoWorkkshops: EvoBIO, EvoCOMNET, EvoHOT, EvoIASP, EvoMUSART, and EvoSTOC Lausanne, LNCS 3449, p. 458--467, 2005.
 
